@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonhello
+  labels:
+    app: pythonhello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pythonhello
+  template:
+    metadata:
+      labels:
+        app: pythonhello
+    spec:
+      containers:
+      - name: pythonhello
+        image: localhost:5000/pythonhello:latest
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "100m"
